@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpa3o6tdm83bv"]
+
+[ext_resource type="Texture2D" uid="uid://bdimfcbktvhkq" path="res://Sprites/grey_circle.png" id="1_6gu28"]
+[ext_resource type="Script" path="res://Sprites/Cursor.gd" id="2_7l8i1"]
+
+[node name="Cursor" type="Sprite2D"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_6gu28")
+script = ExtResource("2_7l8i1")

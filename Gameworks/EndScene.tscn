@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqh0rq85ibqbb"]
+
+[ext_resource type="Script" path="res://Gameworks/EndScene.gd" id="1_q65ia"]
+[ext_resource type="Texture2D" uid="uid://cfgsdq7hf0drw" path="res://Sprites/bg.png" id="2_gl8ik"]
+
+[node name="EndScene" type="Node2D"]
+script = ExtResource("1_q65ia")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = -665.0
+offset_top = -150.0
+offset_right = 1335.0
+offset_bottom = 1850.0
+texture = ExtResource("2_gl8ik")
+
+[node name="TimeLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 308.0
+offset_top = 111.0
+offset_right = 348.0
+offset_bottom = 134.0
+
+[node name="PBLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 308.0
+offset_top = 201.0
+offset_right = 348.0
+offset_bottom = 224.0

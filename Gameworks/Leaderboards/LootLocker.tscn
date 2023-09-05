@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://6dw4r8dh3o4s"]
+
+[ext_resource type="Script" path="res://Scripts/Lootlocker/LootLocker.gd" id="1_14nd3"]
+
+[node name="LootLocker" type="HTTPRequest"]
+script = ExtResource("1_14nd3")

@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://bmva3q77o3msf"]
+
+[ext_resource type="Script" path="res://Levels/Level.gd" id="1_yawep"]
+[ext_resource type="PackedScene" uid="uid://cg7yv5a2gk84j" path="res://Gameworks/Camera.tscn" id="2_tfqpa"]
+[ext_resource type="PackedScene" uid="uid://cpa3o6tdm83bv" path="res://Gameworks/Cursor.tscn" id="3_f34if"]
+[ext_resource type="PackedScene" uid="uid://dxq75mr1rrpve" path="res://Player/Player.tscn" id="4_wyttn"]
+[ext_resource type="PackedScene" uid="uid://du1pwrd4udvhq" path="res://Objects/Conveyor.tscn" id="5_fptxx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bl7g4"]
+size = Vector2(1000, 50)
+
+[node name="TestLelvel" type="Node2D"]
+script = ExtResource("1_yawep")
+
+[node name="Camera" parent="." instance=ExtResource("2_tfqpa")]
+position = Vector2(659, 398)
+
+[node name="Cursor" parent="." instance=ExtResource("3_f34if")]
+
+[node name="Player" parent="." instance=ExtResource("4_wyttn")]
+position = Vector2(517, 321)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(572, 615)
+collision_layer = 4
+collision_mask = 11
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(155, 26)
+shape = SubResource("RectangleShape2D_bl7g4")
+
+[node name="Conveyor" parent="." instance=ExtResource("5_fptxx")]
+position = Vector2(884, 454)
+points = PackedVector2Array(60, 84, 1249, -311)
+width = 100.0
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "timer"

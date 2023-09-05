@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="SS2D_Material_Shape" load_steps=10 format=3 uid="uid://cmi7wibdnh4ja"]
+
+[ext_resource type="Script" path="res://addons/rmsmartshape/materials/edge_material.gd" id="1_mcdwy"]
+[ext_resource type="Texture2D" uid="uid://ggjvmrvaq5k2" path="res://Sprites/Tiles/slime22.png" id="2_ytk7j"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/normal_range.gd" id="3_jyxx0"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/materials/edge_material_metadata.gd" id="4_m68a3"]
+[ext_resource type="Texture2D" uid="uid://bba7ardx3e5rh" path="res://Sprites/Tiles/brickwall.png" id="6_0tlur"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/materials/shape_material.gd" id="6_omsj2"]
+
+[sub_resource type="Resource" id="Resource_2k4fs"]
+script = ExtResource("1_mcdwy")
+textures = Array[Texture2D]([ExtResource("2_ytk7j")])
+textures_corner_outer = Array[Texture2D]([])
+textures_corner_inner = Array[Texture2D]([])
+textures_taper_left = Array[Texture2D]([])
+textures_taper_right = Array[Texture2D]([])
+randomize_texture = true
+use_corner_texture = false
+use_taper_texture = true
+fit_mode = 0
+
+[sub_resource type="Resource" id="Resource_e2eqa"]
+script = ExtResource("3_jyxx0")
+begin = 0.0
+distance = 360.0
+edgeRendering = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_auktk"]
+script = ExtResource("4_m68a3")
+edge_material = SubResource("Resource_2k4fs")
+normal_range = SubResource("Resource_e2eqa")
+weld = true
+render = true
+z_index = 0
+z_as_relative = true
+offset = -1.0
+
+[resource]
+script = ExtResource("6_omsj2")
+_edge_meta_materials = Array[ExtResource("4_m68a3")]([SubResource("Resource_auktk")])
+fill_textures = Array[Texture2D]([ExtResource("6_0tlur")])
+fill_texture_z_index = -10
+fill_texture_show_behind_parent = false
+fill_mesh_offset = 0.0
+render_offset = 0.0

@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvua7fxoy5vsi"]
+
+[ext_resource type="Script" path="res://Scripts/Link.gd" id="1_lmpyg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6gsgh"]
+height = 40.0
+
+[node name="Link" type="RigidBody2D"]
+collision_layer = 256
+collision_mask = 12
+mass = 2.0
+gravity_scale = 2.0
+linear_damp = 1.0
+angular_damp_mode = 1
+angular_damp = 2.0
+script = ExtResource("1_lmpyg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 20)
+shape = SubResource("CapsuleShape2D_6gsgh")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2(0, 40)
+node_a = NodePath("..")
+softness = 0.1

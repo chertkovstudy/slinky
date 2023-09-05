@@ -1,0 +1,74 @@
+[gd_scene load_steps=10 format=3 uid="uid://ds5niqo6vq7s7"]
+
+[ext_resource type="Script" path="res://Gameworks/UI/MainMenuUI.gd" id="1_0hf0f"]
+[ext_resource type="Texture2D" uid="uid://cfgsdq7hf0drw" path="res://Sprites/bg.png" id="1_2n8d6"]
+[ext_resource type="Script" path="res://Gameworks/MainMenu.gd" id="1_gy2ut"]
+[ext_resource type="Texture2D" uid="uid://dbyxy4x3a5bd6" path="res://Sprites/UI/options.png" id="2_twei5"]
+[ext_resource type="PackedScene" uid="uid://cpa3o6tdm83bv" path="res://Gameworks/Cursor.tscn" id="2_y6omf"]
+[ext_resource type="PackedScene" uid="uid://b5xpkew8nk6jm" path="res://Player/PlayerFake.tscn" id="3_ft55d"]
+[ext_resource type="Texture2D" uid="uid://cr6dthjstvdgk" path="res://Sprites/UI/leaderboard.png" id="4_ovnws"]
+[ext_resource type="Texture2D" uid="uid://bpe68hwxjv6dk" path="res://Sprites/UI/play.png" id="5_uuv0p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5226b"]
+size = Vector2(1286, 50)
+
+[node name="Main Menu" type="Node2D"]
+script = ExtResource("1_gy2ut")
+
+[node name="Bg" type="Sprite2D" parent="."]
+position = Vector2(641, 381)
+scale = Vector2(0.64375, 0.64375)
+texture = ExtResource("1_2n8d6")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_0hf0f")
+
+[node name="OptionsButton" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 277.0
+offset_right = 224.0
+offset_bottom = 377.0
+texture_normal = ExtResource("2_twei5")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="LeaderboardButton" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 272.0
+offset_right = 774.0
+offset_bottom = 371.0
+texture_normal = ExtResource("4_ovnws")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="StartButton" type="TextureButton" parent="Control"]
+layout_mode = 0
+offset_left = 295.0
+offset_top = 122.0
+offset_right = 488.0
+offset_bottom = 222.0
+texture_normal = ExtResource("5_uuv0p")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Cursor" parent="." instance=ExtResource("2_y6omf")]
+
+[node name="PlayerFake" parent="." instance=ExtResource("3_ft55d")]
+position = Vector2(382, 564)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(600, 698)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(39, 15)
+shape = SubResource("RectangleShape2D_5226b")
+
+[connection signal="button_down" from="Control/OptionsButton" to="Control" method="_on_options_button_button_down"]
+[connection signal="button_down" from="Control/LeaderboardButton" to="Control" method="_on_leaderboard_button_button_down"]
+[connection signal="button_down" from="Control/StartButton" to="Control" method="_on_start_button_button_down"]

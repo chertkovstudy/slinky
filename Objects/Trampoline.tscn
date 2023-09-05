@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://do5ifhrpctg3l"]
+
+[ext_resource type="Script" path="res://Scripts/Tramploline.gd" id="1_yc81m"]
+[ext_resource type="Texture2D" uid="uid://bo4vigab6k31g" path="res://Sprites/tramp1.png" id="2_u8gxv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_npfra"]
+size = Vector2(680, 320)
+
+[sub_resource type="Animation" id="Animation_voymv"]
+resource_name = "bounce"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 0.8), Vector2(0.6, 1), Vector2(0.8, 0.8)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nucck"]
+_data = {
+"bounce": SubResource("Animation_voymv")
+}
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_up652"]
+bounce = 2.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tl387"]
+size = Vector2(680, 320)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_62qum"]
+size = Vector2(680, 320)
+
+[node name="Trampoline" type="StaticBody2D"]
+collision_layer = 4
+script = ExtResource("1_yc81m")
+
+[node name="Solid" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_npfra")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_u8gxv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nucck")
+}
+
+[node name="Bouncy" type="StaticBody2D" parent="."]
+collision_layer = 128
+collision_mask = 10
+physics_material_override = SubResource("PhysicsMaterial_up652")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bouncy"]
+shape = SubResource("RectangleShape2D_tl387")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+shape = SubResource("RectangleShape2D_62qum")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
